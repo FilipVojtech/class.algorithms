@@ -1,4 +1,4 @@
-package cz.filipvojtech.revision;
+package cz.filipvojtech.utility;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

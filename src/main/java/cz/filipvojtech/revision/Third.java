@@ -1,5 +1,7 @@
 package cz.filipvojtech.revision;
 
+import cz.filipvojtech.utility.InputUtility;
+
 public class Third {
     public static void main(String[] args) {
         int[] numbers = new int[3];
