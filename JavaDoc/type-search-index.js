@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"cz.filipvojtech.revision","l":"CalcMax"},{"p":"cz.filipvojtech.revision","l":"First"},{"p":"cz.filipvojtech.utility","l":"InputUtility"},{"p":"cz.filipvojtech","l":"Main"},{"p":"cz.filipvojtech.revision","l":"Second"},{"p":"cz.filipvojtech.revision","l":"Third"}];updateSearchResults();

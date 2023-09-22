@@ -4,6 +4,13 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputUtility {
+    /**
+     * Gets a number from the user and validates it.
+     * In case the input was invalid, the user is informed and asked to input a number again.
+     *
+     * @param prompt Informative text displayed to the user
+     * @return The user supplied number
+     */
     public static int getValidInt(String prompt) {
         Scanner sc = new Scanner(System.in);
         while (true) {
@@ -17,7 +24,16 @@ public class InputUtility {
         }
     }
 
-    public static int getValidInt(String prompt, int min, int max) {
+    /**
+     * Gets a number from the user from a range and validates it.
+     * In case the input was invalid or outside the range, the user is informed and asked to input a number again.
+     *
+     * @param prompt Informative text displayed to the user
+     * @param lower The lower limit (inclusive) in the range
+     * @param upper The upper limit (exclusive) in the range
+     * @return The user supplied number in the range
+     */
+    public static int getValidInt(String prompt, int lower, int upper) {
         Scanner sc = new Scanner(System.in);
         int input;
 
@@ -31,7 +47,7 @@ public class InputUtility {
                 continue;
             }
 
-            if (input < min || input > max) {
+            if (input <= lower || input > upper) {
                 System.out.println("Number is outside of the allowed range. Please try again.");
                 continue;
             }
