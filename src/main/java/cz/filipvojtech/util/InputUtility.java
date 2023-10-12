@@ -1,4 +1,4 @@
-package cz.filipvojtech.utility;
+package cz.filipvojtech.util;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -11,7 +11,7 @@ public class InputUtility {
      * @param prompt Informative text displayed to the user
      * @return The user supplied number
      */
-    public static int getValidInt(String prompt) {
+    public static int getInt(String prompt) {
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println(prompt);
@@ -29,11 +29,11 @@ public class InputUtility {
      * In case the input was invalid or outside the range, the user is informed and asked to input a number again.
      *
      * @param prompt Informative text displayed to the user
-     * @param lower The lower limit (inclusive) in the range
-     * @param upper The upper limit (exclusive) in the range
+     * @param lower  The lower limit (inclusive) in the range
+     * @param upper  The upper limit (exclusive) in the range
      * @return The user supplied number in the range
      */
-    public static int getValidInt(String prompt, int lower, int upper) {
+    public static int getInt(String prompt, int lower, int upper) {
         Scanner sc = new Scanner(System.in);
         int input;
 
@@ -48,7 +48,7 @@ public class InputUtility {
             }
 
             if (input <= lower || input > upper) {
-                System.out.println("Number is outside of the allowed range. Please try again.");
+                System.out.println("Number is outside of the allowed range: < " + lower + "; " + upper + " ). Please try again.");
                 continue;
             }
 
