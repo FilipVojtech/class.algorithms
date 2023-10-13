@@ -109,7 +109,6 @@ public class Array {
         int arr1Counter = 0, arr2Counter = 0;
 
         for (int i = 0; i < result.length; i++) {
-
             if (arr1Counter == arr1.length) {
                 result[i] = arr2[arr2Counter];
                 arr2Counter++;
@@ -117,6 +116,29 @@ public class Array {
                 result[i] = arr1[arr1Counter];
                 arr1Counter++;
             } else if (arr1[arr1Counter] < arr2[arr2Counter]) {
+                result[i] = arr1[arr1Counter];
+                arr1Counter++;
+            } else {
+                result[i] = arr2[arr2Counter];
+                arr2Counter++;
+            }
+        }
+
+        return result;
+    }
+
+    public static String[] mergeOrdered(String[] arr1, String[] arr2) {
+        var result = new String[arr1.length + arr2.length];
+        int arr1Counter = 0, arr2Counter = 0;
+
+        for (int i = 0; i < result.length; i++) {
+            if (arr1Counter == arr1.length) {
+                result[i] = arr2[arr2Counter];
+                arr2Counter++;
+            } else if (arr2Counter == arr2.length) {
+                result[i] = arr1[arr1Counter];
+                arr1Counter++;
+            } else if (arr1[arr1Counter].length() < arr2[arr2Counter].length()) {
                 result[i] = arr1[arr1Counter];
                 arr1Counter++;
             } else {

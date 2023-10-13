@@ -34,9 +34,14 @@ public class Main {
 //        System.out.println(Arrays.toString(comb1));
 //        System.out.println(Arrays.toString(comb2));
 
-        int[] four = new int[]{5, 12, 33, 42};
-        int[] five = new int[]{1, 9, 55};
-        var mergedOrdered = mergeOrdered(four, five);
-        System.out.println(Arrays.toString(mergedOrdered));
+//        int[] four = new int[]{5, 12, 33, 42};
+//        int[] five = new int[]{1, 9, 55};
+//        var mergedOrdered = mergeOrdered(four, five);
+//        System.out.println(Arrays.toString(mergedOrdered));
+
+        var first = new String[]{"O", "Thr", "Exact", "Very long string"};
+        var second = new String[]{"", "Four", "Exact", "Even longer string"};
+        var mergeOrdered = mergeOrdered(first, second);
+        System.out.println(Arrays.toString(mergeOrdered));
     }
 }
