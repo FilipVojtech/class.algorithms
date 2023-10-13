@@ -6,7 +6,7 @@ import static cz.filipvojtech.util.Array.*;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello mum!");
+//        System.out.println("Hello mum!");
 
 //        int[] arr = new int[]{1, 2, 3};
 //        int max = findMax(arr);
@@ -26,9 +26,17 @@ public class Main {
 //        var decimalBig = growArray(decimal);
 //        System.out.println(decimalBig.length);
 
-        int[] one = new int[]{1, 2, 3};
-        int[] two = new int[]{4, 5, 6};
-        var comb = combine(one, two);
-        System.out.println(Arrays.toString(comb));
+//        int[] one = new int[]{0, 1, 2};
+//        int[] two = new int[]{3, 4, 5};
+//        int[] three = new int[]{6, 7, 8, 9};
+//        var comb1 = merge(one, two);
+//        var comb2 = merge(two, three);
+//        System.out.println(Arrays.toString(comb1));
+//        System.out.println(Arrays.toString(comb2));
+
+        int[] four = new int[]{5, 12, 33, 42};
+        int[] five = new int[]{1, 9, 55};
+        var mergedOrdered = mergeOrdered(four, five);
+        System.out.println(Arrays.toString(mergedOrdered));
     }
 }

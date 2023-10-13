@@ -73,9 +73,9 @@ public class Array {
         return newArr;
     }
 
-    public static int[] combine(int[] arr1, int[] arr2) {
+    public static int[] merge(int[] arr1, int[] arr2) {
         if (arr1.length == arr2.length) {
-            return combineSameLength(arr1, arr2);
+            return mergeSameLength(arr1, arr2);
         }
         int[] combined = new int[arr1.length + arr2.length];
         int counter = 0;
@@ -93,7 +93,7 @@ public class Array {
         return combined;
     }
 
-    private static int[] combineSameLength(int[] arr1, int[] arr2) {
+    private static int[] mergeSameLength(int[] arr1, int[] arr2) {
         var combined = new int[arr1.length * 2];
 
         for (int i = 0; i < arr1.length; i++) {
@@ -102,5 +102,29 @@ public class Array {
         }
 
         return combined;
+    }
+
+    public static int[] mergeOrdered(int[] arr1, int[] arr2) {
+        int[] result = new int[arr1.length + arr2.length];
+        int arr1Counter = 0, arr2Counter = 0;
+
+        for (int i = 0; i < result.length; i++) {
+
+            if (arr1Counter == arr1.length) {
+                result[i] = arr2[arr2Counter];
+                arr2Counter++;
+            } else if (arr2Counter == arr2.length) {
+                result[i] = arr1[arr1Counter];
+                arr1Counter++;
+            } else if (arr1[arr1Counter] < arr2[arr2Counter]) {
+                result[i] = arr1[arr1Counter];
+                arr1Counter++;
+            } else {
+                result[i] = arr2[arr2Counter];
+                arr2Counter++;
+            }
+        }
+
+        return result;
     }
 }
