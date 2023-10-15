@@ -1,4 +1,4 @@
-package weeklyexcercises.utils;
+package weeklyexercises.part01_exercises.utils;
 
 /**
  * @author michelle

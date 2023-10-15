@@ -1,11 +1,11 @@
-package weeklyexcercises.part1_exercises;
+package weeklyexercises.part01_exercises;
 
-import weeklyexcercises.utils.FileHandlingUtilities;
+import weeklyexercises.part01_exercises.utils.FileHandlingUtilities;
 
 import java.text.MessageFormat;
 import java.util.Arrays;
 
-import static weeklyexcercises.utils.ExerciseUtilities.*;
+import static weeklyexercises.part01_exercises.utils.ExerciseUtilities.*;
 
 /**
  * @author michelle

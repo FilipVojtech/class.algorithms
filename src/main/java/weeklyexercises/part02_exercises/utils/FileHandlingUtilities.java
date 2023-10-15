@@ -1,4 +1,4 @@
-package weeklyexcercises.utils;
+package weeklyexercises.part02_exercises.utils;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
