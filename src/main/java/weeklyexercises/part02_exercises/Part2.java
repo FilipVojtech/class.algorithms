@@ -25,6 +25,5 @@ public class Part2 {
         System.out.println("Reversed code array: " + Arrays.toString(reverse(arr)));
         reverseInPlace(fileArr);
         System.out.println("Reversed file array: " + Arrays.toString(fileArr));
-
     }
 }
