@@ -39,9 +39,9 @@ public class Main {
 //        var mergedOrdered = mergeOrdered(four, five);
 //        System.out.println(Arrays.toString(mergedOrdered));
 
-        var first = new String[]{"O", "Thr", "Exact", "Very long string"};
-        var second = new String[]{"", "Four", "Exact", "Even longer string"};
-        var mergeOrdered = mergeOrdered(first, second);
-        System.out.println(Arrays.toString(mergeOrdered));
+//        var first = new String[]{"Exact", "O", "Thr", "Very long string"};
+//        var second = new String[]{"", "Even longer string", "Exact", "Four"};
+//        var mergeOrdered = mergeOrdered(first, second);
+//        System.out.println(Arrays.toString(mergeOrdered));
     }
 }

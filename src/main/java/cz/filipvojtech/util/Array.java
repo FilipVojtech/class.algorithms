@@ -135,16 +135,20 @@ public class Array {
             if (arr1Counter == arr1.length) {
                 result[i] = arr2[arr2Counter];
                 arr2Counter++;
-            } else if (arr2Counter == arr2.length) {
+            } else if (arr2Counter == arr1.length) {
                 result[i] = arr1[arr1Counter];
                 arr1Counter++;
-            } else if (arr1[arr1Counter].length() < arr2[arr2Counter].length()) {
-                result[i] = arr1[arr1Counter];
-                arr1Counter++;
-            } else {
-                result[i] = arr2[arr2Counter];
-                arr2Counter++;
-            }
+            } else
+                switch ((int) Math.signum(arr1[arr1Counter].compareTo(arr2[arr2Counter]))) {
+                    case -1, 0:
+                        result[i] = arr1[arr1Counter];
+                        arr1Counter++;
+                        break;
+                    case 1:
+                        result[i] = arr2[arr2Counter];
+                        arr2Counter++;
+                        break;
+                }
         }
 
         return result;
