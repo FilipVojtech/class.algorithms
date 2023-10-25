@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"cz.filipvojtech"},{"l":"cz.filipvojtech.revision"},{"l":"cz.filipvojtech.utility"}];updateSearchResults();
