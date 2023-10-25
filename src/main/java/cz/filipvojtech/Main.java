@@ -43,5 +43,14 @@ public class Main {
 //        var second = new String[]{"", "Even longer string", "Exact", "Four"};
 //        var mergeOrdered = mergeOrdered(first, second);
 //        System.out.println(Arrays.toString(mergeOrdered));
+
+        //*******************//
+        //    Partitioning   //
+        //*******************//
+
+//        var arr3 = new int[]{44, 15, 16, 14, 1, 3, 62, 1, 99, 33, 66, 11, 10, 8};
+//        var eq = partition(arr3, 15);
+//        System.out.println("Partitioned array:");
+//        System.out.println(Arrays.toString(eq));
     }
 }

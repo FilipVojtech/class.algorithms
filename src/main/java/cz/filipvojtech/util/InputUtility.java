@@ -47,12 +47,62 @@ public class InputUtility {
                 continue;
             }
 
-            if (input <= lower || input > upper) {
+            if (input < lower || input >= upper) {
                 System.out.println("Number is outside of the allowed range: < " + lower + "; " + upper + " ). Please try again.");
                 continue;
             }
 
             return input;
+        }
+    }
+
+    /**
+     * Gets a string from the user and validates it.
+     * In case the input was invalid, the user is informed and asked for input again.
+     *
+     * @param prompt Informative text displayed to the user
+     * @return The user supplied number
+     */
+    public static String getString(String prompt) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println(prompt);
+        return sc.nextLine();
+    }
+
+    /**
+     * Get a specified number of string from the user
+     *
+     * @param length Numbe of words
+     * @return An array of the words entered
+     */
+    public static String[] getStringArray(int length) {
+        String[] array = new String[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = getString("Word " + (i + 1) + ":");
+        }
+        return array;
+    }
+
+    /**
+     * Prompts the user for a yes/no question
+     * The question is repeated until a valid choice is made
+     *
+     * @param prompt The prompt to ask the user
+     * @return true if the user selects yes, false if no
+     */
+    public static boolean promptYesNo(String prompt) {
+        Scanner sc = new Scanner(System.in);
+        String input;
+
+        while (true) {
+            System.out.println(prompt + "[y/n]");
+            input = sc.nextLine();
+            switch (input.toLowerCase()) {
+                case "yes", "y":
+                    return true;
+                case "no", "n":
+                    return false;
+            }
         }
     }
 }
