@@ -1,4 +1,4 @@
-package weeklyexercises.part04_exercises.utils;
+package weeklyexercises.part04_exercises_missed_deadline.utils;
 
 public class Utilities {
     /**

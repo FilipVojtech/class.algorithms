@@ -1,6 +1,6 @@
 package cz.filipvojtech;
 
-import java.util.Arrays;
+import cz.filipvojtech.util.Array;
 
 import static cz.filipvojtech.util.Array.*;
 
@@ -52,5 +52,16 @@ public class Main {
 //        var eq = partition(arr3, 15);
 //        System.out.println("Partitioned array:");
 //        System.out.println(Arrays.toString(eq));
+
+        /*
+        ||********************||
+        ||    Deduplication   ||
+        ||********************||
+         */
+
+        var arr6 = new String[]{"One", "Two", "Three", "one", "One", "Three"};
+        var dedup = deduplicateGrow(arr6);
+        System.out.println("Original: " + Array.toString(arr6, ", "));
+        System.out.println(" Deduped: " + Array.toString(dedup, ", "));
     }
 }

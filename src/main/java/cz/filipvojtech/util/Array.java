@@ -59,6 +59,26 @@ public class Array {
     }
 
     /**
+     * Grows an array by specified length
+     *
+     * @param oldArray  The array to grow
+     * @param enlargeBy Amount how much to increase the size
+     * @return The resized array
+     */
+    public static String[] growArray(String[] oldArray, int enlargeBy) {
+        if (enlargeBy < 0) {
+            return oldArray;
+        }
+
+        String[] newArr = new String[oldArray.length + enlargeBy];
+
+        for (int i = 0; i < oldArray.length; i++)
+            newArr[i] = oldArray[i];
+
+        return newArr;
+    }
+
+    /**
      * Grows an array
      *
      * @param oldArray The array to grow
@@ -240,6 +260,69 @@ public class Array {
         return result;
     }
 
+    /**
+     * Get a slice from the start of an array
+     *
+     * @param array  Array to get the slice from
+     * @param length The length of the slice.
+     *               If the length is larger than the array, it is cropped.
+     * @return The array slice
+     */
+    private static String[] copy(String[] array, int length) {
+        if (length > array.length) {
+            length = array.length;
+        }
+
+        String[] result = new String[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = result[i];
+        }
+
+        return result;
+    }
+
+    /**
+     * Get a slice of an array with offset
+     *
+     * @param array  Array to get the slice from
+     * @param offset The start of the slice
+     *               If the offset is outside the array, an empty array is returned.
+     * @param length The length of the slice
+     *               If the length is larger than the array, it is capped.
+     * @return The array slice
+     */
+    private static String[] copy(String[] array, int offset, int length) {
+        if (offset > array.length) {
+            return new String[0];
+        }
+        if (offset + length > array.length) {
+            length = array.length - offset;
+        }
+
+        String[] result = new String[length];
+        for (int i = 0; i < length; i++) {
+            array[i + offset] = result[i];
+        }
+
+        return result;
+    }
+
+    /**
+     * Check if string can be found withing an array
+     *
+     * @param array  The array to search through
+     * @param string The string to look for
+     * @return True if the element was found, false otherwise
+     */
+    public static boolean contains(String[] array, String string, boolean caseSensitive) {
+        for (var item : array) {
+            if (caseSensitive ? string.equals(item) : string.equalsIgnoreCase(item)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     //*******************//
     //    Partitioning   //
     //*******************//
@@ -306,5 +389,105 @@ public class Array {
                     .append(delimiter);
         }
         return sb.substring(0, sb.length() - delimiter.length());
+    }
+
+
+    /*
+    ||********************||
+    ||    Deduplication   ||
+    ||********************||
+     */
+
+    /**
+     * Deduplicate an array with growing with each element added to the resulting array.
+     * Method written using labels.
+     *
+     * @param array The array to deduplicate
+     * @return Deduplicated array
+     */
+    public static String[] deduplicateWithLabels(String[] array) {
+        String[] filtered = new String[1];
+        filtered[0] = array[0];
+        int t = 1;
+
+        outer:
+        for (int j = 1; j < array.length; j++) {
+            var el = array[j];
+
+            for (int i = 0; i < t; i++) {
+                if (el.equals(filtered[i])) {
+                    continue outer;
+                }
+            }
+            filtered = growArray(filtered, 1);
+            filtered[t] = el;
+            t++;
+        }
+
+        return filtered;
+    }
+
+    /**
+     * Deduplicate an array with growing with each element added to the resulting array.
+     *
+     * @param array The array to deduplicate
+     * @return Deduplicated array
+     */
+    public static String[] deduplicateGrow(String[] array) {
+        if (array == null) {
+            return null;
+        }
+
+        if (array.length < 2) {
+            return copy(array, array.length);
+        }
+
+        String[] filtered = new String[1];
+        filtered[0] = array[0];
+        int t = 1;
+
+        for (int j = 1; j < array.length; j++) {
+            var el = array[j];
+            boolean found = contains(filtered, el, true);
+
+            if (!found) {
+                filtered = growArray(filtered, 1);
+                filtered[t] = el;
+                t++;
+            }
+        }
+
+        return filtered;
+    }
+
+    /**
+     * Deduplicate an array with slicing the free space after
+     *
+     * @param array The array to deduplicate
+     * @return Deduplicated array
+     */
+    public static String[] deduplicateSlice(String[] array) {
+        if (array == null) {
+            return null;
+        }
+
+        if (array.length < 2) {
+            return array;
+        }
+        String[] filtered = new String[array.length];
+        filtered[0] = array[0];
+        int t = 1;
+
+        for (int i = 0; i < array.length; i++) {
+            var el = array[i];
+            boolean found = contains(filtered, el, true);
+
+            if (!found) {
+                filtered[t] = el;
+                t++;
+            }
+        }
+
+        return copy(filtered, t);
     }
 }
