@@ -59,9 +59,22 @@ public class Main {
         ||********************||
          */
 
-        var arr6 = new String[]{"One", "Two", "Three", "one", "One", "Three"};
-        var dedup = deduplicateGrow(arr6);
-        System.out.println("Original: " + Array.toString(arr6, ", "));
-        System.out.println(" Deduped: " + Array.toString(dedup, ", "));
+//        var arr6 = new String[]{"One", "Two", "Three", "one", "One", "Three"};
+//        var dedup = deduplicateGrow(arr6);
+//        System.out.println("Original: " + Array.toString(arr6, ", "));
+//        System.out.println(" Deduped: " + Array.toString(dedup, ", "));
+
+
+        /*
+        ||*****************||
+        ||    Inserting    ||
+        ||*****************||
+         */
+
+//        var arr7 = new int[]{1, 2, 4, 5, 6};
+//        var newValue = 3;
+//        var inserted = insertResize(arr7, 2, newValue);
+//        System.out.println(Array.toString(arr7, ", "));
+//        System.out.println(Array.toString(inserted, ", "));
     }
 }

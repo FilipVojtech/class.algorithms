@@ -490,4 +490,56 @@ public class Array {
 
         return copy(filtered, t);
     }
+
+
+    /*
+    ||*****************||
+    ||    Inserting    ||
+    ||*****************||
+     */
+
+    /**
+     * Overwrite a value at a specified position in an array
+     *
+     * @param array    The array
+     * @param position The position to be assigned into
+     * @param newValue Value to be assigned to a position
+     * @return The old value on the position. If the array is null or the position invalid, 0 is returned.
+     */
+    public static int insertOverwrite(int[] array, int position, int newValue) {
+        if (array == null ||
+                position < 0 || position > array.length - 1) {
+            return 0;
+        }
+
+        int original = array[position];
+        array[position] = newValue;
+        return original;
+    }
+
+    /**
+     * Overwrite a value at a specified position in an array
+     *
+     * @param array    The array
+     * @param position The position to be assigned into
+     * @param newValue Value to be assigned to a position
+     * @return The old value on the position. If the array is null or the position invalid, 0 is returned.
+     */
+    public static int[] insertResize(int[] array, int position, int newValue) {
+        if (array == null ||
+                position < 0 || position > array.length - 1) {
+            return null;
+        }
+
+        int[] shifted = new int[array.length + 1];
+
+        for (int i = 0; i < position; i++) {
+            shifted[i] = array[i];
+        }
+        shifted[position] = newValue;
+        for (int i = position; i < array.length; i++) {
+            shifted[i + 1] = array[i];
+        }
+        return shifted;
+    }
 }
