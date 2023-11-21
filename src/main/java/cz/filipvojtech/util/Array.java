@@ -542,4 +542,34 @@ public class Array {
         }
         return shifted;
     }
+
+    /**
+     * Insert and element into an array and shift others
+     *
+     * @param array    The array to be inserted into
+     * @param position THe position to insert at
+     * @param newValue The new value
+     */
+    public static void insertShift(int[] array, int position, int newValue) {
+        if (array == null) {
+            return;
+        }
+        if (position < 0 || position >= array.length) {
+            return;
+        }
+//        Create prev variable and set to value
+        int prev = newValue;
+        int tmp;
+//        For each element in array starting from specified position:
+        for (int i = position; i < array.length; i++) {
+//        Create temp variable and set to array[i]
+            tmp = array[i];
+//        Set array[i] to prev
+            array[i] = prev;
+//        Set prev to temp
+            prev = tmp;
+        }
+//        Algorithm has completed, no return necessary
+    }
+
 }

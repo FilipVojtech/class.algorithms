@@ -71,10 +71,13 @@ public class Main {
         ||*****************||
          */
 
-//        var arr7 = new int[]{1, 2, 4, 5, 6};
-//        var newValue = 3;
-//        var inserted = insertResize(arr7, 2, newValue);
-//        System.out.println(Array.toString(arr7, ", "));
-//        System.out.println(Array.toString(inserted, ", "));
+        var arr7 = new int[]{1, 2, 4, 5, 6};
+        var newValue = 3;
+        var inserted = insertResize(arr7, 2, newValue);
+        System.out.println(Array.toString(arr7, ", "));
+        System.out.println(Array.toString(inserted, ", "));
+
+        insertShift(arr7, 2, newValue);
+        System.out.println(Array.toString(arr7, ", "));
     }
 }
