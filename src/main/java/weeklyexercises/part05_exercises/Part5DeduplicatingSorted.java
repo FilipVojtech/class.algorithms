@@ -5,11 +5,9 @@ import cz.filipvojtech.classes_from_michelle.Book;
 import cz.filipvojtech.util.Array;
 import cz.filipvojtech.util.InputUtility;
 import weeklyexercises.part05_exercises.utils.BookUtilities;
-import weeklyexercises.part05_exercises.utils.CustomUtils;
 import weeklyexercises.part05_exercises.utils.FileHandlingUtilities;
 
 import java.io.File;
-import java.util.Arrays;
 
 /**
  * @author michelle
@@ -41,7 +39,6 @@ public class Part5DeduplicatingSorted {
             } else break;
         }
         data = FileHandlingUtilities.readBookFile(fName);
-        Arrays.sort(data);
         if (!BookUtilities.isSortedAsc(data)) {
             System.out.println("Sorry, the data is not sorted. Please specify a new file.");
             readUserBookFile();
