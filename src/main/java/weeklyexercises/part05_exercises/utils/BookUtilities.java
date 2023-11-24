@@ -4,7 +4,6 @@ import cz.filipvojtech.classes_from_michelle.Book;
 import cz.filipvojtech.util.Array;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static cz.filipvojtech.util.Array.copy;
@@ -71,6 +70,7 @@ public class BookUtilities {
     /**
      * Removes duplicates from sorted array in ascending order.
      * This method uses the array grow method.
+     * If the array is not sorted, a method with unsorted deduplication is run on the data.
      *
      * @param array The array to remove duplicates from
      * @return Array without duplicates
@@ -83,7 +83,7 @@ public class BookUtilities {
             return array;
         }
         if (!isSortedAsc(array)) {
-            Arrays.sort(array);
+            return deduplicateUnsorted(array);
         }
         Book[] result = new Book[1];
         int t = 0;
