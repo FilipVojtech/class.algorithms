@@ -94,6 +94,29 @@ public class Array {
     }
 
     /**
+     * Grows an array
+     *
+     * @param oldArray The array to grow
+     * @return The resized array
+     */
+    public static <T> T[] growArray(Class<T> tClass, T[] oldArray, int growBy) {
+        if (oldArray == null) {
+            return null;
+        }
+        T[] newArr = (T[]) java.lang.reflect.Array.newInstance(tClass, oldArray.length + growBy);
+
+        // Skip copying values when the original was empty
+        if (newArr.length == 1) {
+            return newArr;
+        }
+
+        for (int i = 0; i < oldArray.length; i++)
+            newArr[i] = oldArray[i];
+
+        return newArr;
+    }
+
+    /**
      * Merge two arrays
      *
      * @param arr1 First array
@@ -268,14 +291,14 @@ public class Array {
      *               If the length is larger than the array, it is cropped.
      * @return The array slice
      */
-    private static String[] copy(String[] array, int length) {
+    public static String[] copy(String[] array, int length) {
         if (length > array.length) {
             length = array.length;
         }
 
         String[] result = new String[length];
         for (int i = 0; i < length; i++) {
-            array[i] = result[i];
+            result[i] = array[i];
         }
 
         return result;
@@ -291,7 +314,7 @@ public class Array {
      *               If the length is larger than the array, it is capped.
      * @return The array slice
      */
-    private static String[] copy(String[] array, int offset, int length) {
+    public static String[] copy(String[] array, int offset, int length) {
         if (offset > array.length) {
             return new String[0];
         }
@@ -301,7 +324,54 @@ public class Array {
 
         String[] result = new String[length];
         for (int i = 0; i < length; i++) {
-            array[i + offset] = result[i];
+            result[i] = array[i + offset];
+        }
+
+        return result;
+    }
+
+    /**
+     * Get a slice from the start of an array
+     *
+     * @param array  Array to get the slice from
+     * @param length The length of the slice.
+     *               If the length is larger than the array, it is cropped.
+     * @return The array slice
+     */
+    public static <T> T[] copy(Class<T> tClass, T[] array, int length) {
+        if (length > array.length) {
+            length = array.length;
+        }
+
+        T[] result = (T[]) java.lang.reflect.Array.newInstance(tClass, length);
+        for (int i = 0; i < length; i++) {
+            result[i] = array[i];
+        }
+
+        return result;
+    }
+
+    /**
+     * Get a slice of an array with offset
+     *
+     * @param array  Array to get the slice from
+     * @param offset The start of the slice
+     *               If the offset is outside the array, an empty array is returned.
+     * @param length The length of the slice
+     *               If the length is larger than the array, it is capped.
+     * @return The array slice
+     */
+    public static <T> T[] copy(Class<T> tClass, T[] array, int offset, int length) {
+        if (offset > array.length) {
+            return (T[]) java.lang.reflect.Array.newInstance(tClass, 0);
+        }
+        if (offset + length > array.length) {
+            length = array.length - offset;
+        }
+
+        T[] result = (T[]) java.lang.reflect.Array.newInstance(tClass, length);
+        for (int i = 0; i < length; i++) {
+            result[i] = array[i + offset];
         }
 
         return result;
@@ -317,6 +387,24 @@ public class Array {
     public static boolean contains(String[] array, String string, boolean caseSensitive) {
         for (var item : array) {
             if (caseSensitive ? string.equals(item) : string.equalsIgnoreCase(item)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static <T> boolean contains(T[] array, T item) {
+        for (var element : array) {
+            if (item.equals(element)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static <T> boolean containsSorted(T[] array, T item) {
+        for (var element : array) {
+            if (item.equals(element)) {
                 return true;
             }
         }
@@ -371,6 +459,26 @@ public class Array {
         }
 
         return merge(arrays[0], tr1, arrays[1], tr2);
+    }
+
+    public static int indexOf(int[] array, int value) {
+        if (array == null) {
+            return -1;
+        }
+        if (array.length == 0) {
+            return -1;
+        }
+        if (array.length == 1) {
+            return 0;
+        }
+
+        for (int i = 0; i < array.length; i++) {
+            if (value == array[i]) {
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     public static String toString(int[] arr, String delimiter) {
