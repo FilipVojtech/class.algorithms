@@ -7,7 +7,6 @@ import weeklyexercises.part05_exercises.utils.BookUtilities;
 import weeklyexercises.part05_exercises.utils.CustomUtils;
 import weeklyexercises.part05_exercises.utils.FileHandlingUtilities;
 
-import java.io.File;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 
@@ -38,16 +37,8 @@ public class Part5DeduplicatingUnsorted {
     }
 
     private static void readUserBookFile() {
-        String fName;
-        File f;
-        while (true) {
-            // SampleInput/Part5UnsortedSampleInputDuplicates.txt
-            fName = InputUtility.getString("File name:");
-            f = new File(fName);
-            if (!f.exists()) {
-                System.out.println("The file specified does not exist. Please input a new name.");
-            } else break;
-        }
+        // SampleInput/Part5UnsortedSampleInputDuplicates.txt
+        String fName = InputUtility.getExistingFileName("File name:");
         useArrayLists = InputUtility.promptYesNo("Do you want to use ArrayLists under the hood? Answering no will use regular arrays instead.");
         var data = FileHandlingUtilities.readBookFile(fName);
         if (useArrayLists) {

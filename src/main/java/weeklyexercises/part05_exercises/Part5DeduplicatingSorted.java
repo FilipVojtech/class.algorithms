@@ -7,8 +7,6 @@ import cz.filipvojtech.util.InputUtility;
 import weeklyexercises.part05_exercises.utils.BookUtilities;
 import weeklyexercises.part05_exercises.utils.FileHandlingUtilities;
 
-import java.io.File;
-
 /**
  * @author michelle
  */
@@ -27,17 +25,9 @@ public class Part5DeduplicatingSorted {
     }
 
     private static void readUserBookFile() {
-        String fName;
-        File f;
-        while (true) {
-            // SampleInput/Part5UnsortedSampleInputDuplicates.txt
-            // SampleInput/Part5SortedSampleBookInputDuplicates.txt
-            fName = InputUtility.getString("File name:");
-            f = new File(fName);
-            if (!f.exists()) {
-                System.out.println("The file specified does not exist. Please input a new name.");
-            } else break;
-        }
+        // SampleInput/Part5UnsortedSampleInputDuplicates.txt
+        // SampleInput/Part5SortedSampleBookInputDuplicates.txt
+        String fName = InputUtility.getExistingFileName("File name:");
         data = FileHandlingUtilities.readBookFile(fName);
         if (!BookUtilities.isSortedAsc(data)) {
             System.out.println("Sorry, the data is not sorted. Please specify a new file.");

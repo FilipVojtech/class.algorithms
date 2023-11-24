@@ -1,5 +1,6 @@
 package cz.filipvojtech.util;
 
+import java.io.File;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -104,5 +105,24 @@ public class InputUtility {
                     return false;
             }
         }
+    }
+
+    /**
+     * Get an existing file from the user. The input is validated to be an existing file.
+     *
+     * @param prompt Message to the user of what is expected
+     * @return The input from the user.
+     */
+    public static String getExistingFileName(String prompt) {
+        String fName;
+        File f;
+        while (true) {
+            fName = getString(prompt);
+            f = new File(fName);
+            if (!f.exists()) {
+                System.out.println(Messages.FILE_NOT_EXISTS);
+            } else break;
+        }
+        return fName;
     }
 }
