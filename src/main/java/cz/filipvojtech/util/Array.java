@@ -1,5 +1,6 @@
 package cz.filipvojtech.util;
 
+@SuppressWarnings({"ManualArrayCopy", "unused", "DuplicatedCode"})
 public class Array {
     /**
      * @param nums The numbers to search through
@@ -418,12 +419,12 @@ public class Array {
         var arrays = new int[2][arr.length];
         int tr1 = 0, tr2 = 0;
 
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] <= lessThanValue) {
-                arrays[0][tr1] = arr[i];
+        for (int j : arr) {
+            if (j <= lessThanValue) {
+                arrays[0][tr1] = j;
                 tr1++;
             } else {
-                arrays[1][tr2] = arr[i];
+                arrays[1][tr2] = j;
                 tr2++;
             }
         }
@@ -448,12 +449,12 @@ public class Array {
         var arrays = new int[2][arr.length];
         int tr1 = 0, tr2 = 0;
 
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] <= lessThanValue) {
-                arrays[0][tr1] = arr[i];
+        for (int j : arr) {
+            if (j <= lessThanValue) {
+                arrays[0][tr1] = j;
                 tr1++;
             } else {
-                arrays[1][tr2] = arr[i];
+                arrays[1][tr2] = j;
                 tr2++;
             }
         }
@@ -461,30 +462,10 @@ public class Array {
         return merge(arrays[0], tr1, arrays[1], tr2);
     }
 
-    public static int indexOf(int[] array, int value) {
-        if (array == null) {
-            return -1;
-        }
-        if (array.length == 0) {
-            return -1;
-        }
-        if (array.length == 1) {
-            return 0;
-        }
-
-        for (int i = 0; i < array.length; i++) {
-            if (value == array[i]) {
-                return i;
-            }
-        }
-
-        return -1;
-    }
-
     public static String toString(int[] arr, String delimiter) {
-        String printedArray = "";
+        StringBuilder printedArray = new StringBuilder();
         for (var number : arr) {
-            printedArray += number + delimiter;
+            printedArray.append(number).append(delimiter);
         }
         return printedArray.substring(0, printedArray.length() - delimiter.length());
     }
@@ -586,8 +567,7 @@ public class Array {
         filtered[0] = array[0];
         int t = 1;
 
-        for (int i = 0; i < array.length; i++) {
-            var el = array[i];
+        for (String el : array) {
             boolean found = contains(filtered, el, true);
 
             if (!found) {
@@ -665,19 +645,78 @@ public class Array {
         if (position < 0 || position >= array.length) {
             return;
         }
-//        Create prev variable and set to value
         int prev = newValue;
         int tmp;
-//        For each element in array starting from specified position:
         for (int i = position; i < array.length; i++) {
-//        Create temp variable and set to array[i]
             tmp = array[i];
-//        Set array[i] to prev
             array[i] = prev;
-//        Set prev to temp
             prev = tmp;
         }
-//        Algorithm has completed, no return necessary
     }
 
+    /*
+    ||**************||
+    ||    Search    ||
+    ||**************||
+     */
+
+    /**
+     * Find the first occurrence of a number in an array
+     *
+     * @param array The array to search through
+     * @param value The value to look for
+     * @return Returns the index of the value. Returns -1 if the array is null or empty or the value is not found.
+     */
+    public static int indexOf(int[] array, int value) {
+        if (array == null) {
+            return -1;
+        }
+        if (array.length == 0) {
+            return -1;
+        }
+        if (array.length == 1) {
+            return 0;
+        }
+
+        for (int i = 0; i < array.length; i++) {
+            if (value == array[i]) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+
+    /**
+     * Find the last occurrence of a number in an array
+     *
+     * @param array The array to search through
+     * @param value The value to look for
+     * @return Returns the index of the value. Returns -1 if the array is null or empty or the value is not found.
+     */
+    public static int lastIndexOf(int[] array, int value) {
+        // Best case scenario improvement
+        if (array == null) {
+            return -1;
+        }
+        if (array.length == 0) {
+            return -1;
+        }
+        if (array.length == 1) {
+            return 0;
+        }
+
+        for (int i = array.length - 1; i >= 0; i--) {
+            if (value == array[i]) {
+                return i;
+            }
+            // Average case improvement
+            if (array[i] > value) {
+                break;
+            }
+        }
+
+        return -1;
+    }
 }
