@@ -1,5 +1,7 @@
 package cz.filipvojtech.util;
 
+import cz.filipvojtech.classes_from_michelle.Book;
+
 @SuppressWarnings({"ManualArrayCopy", "unused", "DuplicatedCode"})
 public class Array {
     /**
@@ -410,6 +412,25 @@ public class Array {
             }
         }
         return false;
+        // TODO
+    }
+
+    /**
+     * Checks if a sorted array is in ascending order.
+     *
+     * @param array The array to check
+     * @return True if the array is in ascending order, false otherwise
+     */
+    public static boolean isSorted(String[] array) {
+        if (array == null) {
+            return true;
+        }
+        for (int i = 1; i < array.length; i++) {
+            if (array[i].compareTo(array[i - 1]) < 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     //*******************//
