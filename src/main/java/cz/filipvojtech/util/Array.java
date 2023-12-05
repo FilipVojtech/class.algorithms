@@ -632,7 +632,7 @@ public class Array {
      * @param array    The array
      * @param position The position to be assigned into
      * @param newValue Value to be assigned to a position
-     * @return The old value on the position. If the array is null or the position invalid, 0 is returned.
+     * @return The old value on the position. If the array is null or the position invalid, null is returned.
      */
     public static int[] insertResize(int[] array, int position, int newValue) {
         if (array == null ||
@@ -739,5 +739,36 @@ public class Array {
         }
 
         return -1;
+    }
+
+    /**
+     * Grows the array by a specified amount.
+     * @param array The array to grow.
+     * @param enlargeBy The size that the array will be enlarged by
+     * @return The now bigger array.
+     */
+    public static int[] growArray(int[] array, int enlargeBy) {
+        int[] result = new int[array.length + enlargeBy];
+        copy(array, result);
+        return result;
+    }
+
+    /**
+     * Copies the array into the target array. If the target array is smaller than the origin, the remaining values are discarded.
+     *
+     * @param array  The array to copy from.
+     * @param target The target array to copy the values to.
+     */
+    public static void copy(int[] array, int[] target) {
+        if (array == null) {
+            return;
+        }
+        if (target == null) {
+            return;
+        }
+        int forTermination = array.length < target.length ? array.length : target.length;
+        for (int i = 0; i < forTermination; i++) {
+            target[i] = array[i];
+        }
     }
 }
